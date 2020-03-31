@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchStudents } from '../redux/students'
+import { Link } from "react-router-dom";
+import { fetchStudents } from '../redux/students';
 
 // Notice that we're exporting the AllStudents component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -10,20 +11,18 @@ export class AllStudents extends React.Component {
     this.props.getStudentsFromStore()
   }
   render() {
-    const {students, fetchStudents} = this.props
+    const {students} = this.props
     return (
       <div>
-        <center>
         <h2>All Students</h2>
           <div>
             {students.map(student => (
               <div key={student.id}>
-                <h3>Name: {student.firstName} {student.lastName}</h3>
-                {/* <img src={student.imageUrl} height="400" width="200" /> */}
+                <img src={student.imageUrl} height="400" width="200" />
+                <h3><Link to={`/students/${student.id}`}>{student.firstName} {student.lastName}</Link></h3>
               </div>
             ))}
           </div>
-          </center>
       </div>
     )
   }
@@ -31,7 +30,7 @@ export class AllStudents extends React.Component {
 
 const mapState = (state) => {
   return {
-    students: state.students.students
+    students: state.students.all
   };
 };
 

@@ -1,6 +1,7 @@
 //action type
 const SET_STUDENTS = 'SET_STUDENTS';
 
+
 //action creators
 export const setStudents = (students) => ({
   type: SET_STUDENTS,
@@ -21,7 +22,7 @@ export const fetchStudents = () => {
 
 //initial state
 const initialState = {
-  students: []
+  all: []
 }
 
 // Take a look at app/redux/index.js to see where this reducer is
@@ -29,7 +30,7 @@ const initialState = {
 export default function studentsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_STUDENTS:
-      return {...state, students: action.students};
+      return {...state, all: action.students};
     default:
       return state;
   }

@@ -7,6 +7,7 @@ export const setCampuses = (campuses) => ({
   campuses
 });
 
+
 //thunk creators
 export const fetchCampuses = () => {
  return async (dispatch, getState, {axios}) => {
@@ -21,7 +22,7 @@ export const fetchCampuses = () => {
 
 //initial state
 const initialState = {
-  campuses: []
+  all: []
 }
 
 // Take a look at app/redux/index.js to see where this reducer is
@@ -29,7 +30,7 @@ const initialState = {
 export default function campusesReducer(state = initialState, action) {
   switch (action.type) {
     case SET_CAMPUSES:
-      return {...state, campuses: action.campuses};
+      return {...state, all: action.campuses};
     default:
       return state;
   }
