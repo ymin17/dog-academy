@@ -18,14 +18,16 @@ export class AllCampuses extends React.Component {
       <div>
         <center>
         <h2>All Campuses</h2>
-          <div>
-            {campuses.map(campus => (
-              <div key={campus.id}>
-                <h3><Link to={`/campuses/${campus.id}`}>{campus.name}</Link></h3>
-                <img src={campus.imageUrl} height="400" width="400" />
-              </div>
-            ))}
-          </div>
+        <div>
+          {campuses.map(campus => (
+            <div key={campus.id}>
+              <h3><Link to={`/campuses/${campus.id}`}>{campus.name}</Link></h3>
+              <img src={campus.imageUrl} height="400" width="400" />
+            </div>
+          ))}
+        </div>
+        {/* <button type="button" to="/campuses/addCampus" renderas={Link}>Add Campus</button> */}
+        <Link to="/campuses/addCampus"><button type="button">Add Campus</button></Link>
         </center>
       </div>
     )

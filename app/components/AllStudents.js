@@ -23,6 +23,7 @@ export class AllStudents extends React.Component {
               </div>
             ))}
           </div>
+          <Link to="/students/addStudent"><button type="button">Add Student</button></Link>
       </div>
     )
   }

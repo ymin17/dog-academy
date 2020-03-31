@@ -27,4 +27,16 @@ router.get('/:campusId', async (req, res, next) => {
   }
 });
 
+router.post('/addCampus', async (req, res, next) => {
+  try {
+    const { name, address } = req.body
+    console.log("req.body: ", req.body);
+    const newCampus = await Campus.create({name, address})
+    console.log('new Campus: ', newCampus)
+    res.json(newCampus);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router
