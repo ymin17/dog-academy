@@ -29,7 +29,6 @@ export class AddCampus extends Component {
     return (
       <div>
         <h2>New Campus Form</h2>
-        {/* <h3>Campus Name</h3> */}
         <form onSubmit={this.handleSubmit}>
           <label>Campus Name: </label>
           <input type="text" name="name" value={name} onChange={this.handleChange} />
