@@ -12,6 +12,7 @@ export class SingleStudent extends React.Component {
     const studentsCampus = student.campus
     console.log('single student props: ', this.props)
     console.log('STUDENTS CAMPUS: ', studentsCampus)
+    console.log('type of studentsCamp: ', typeof studentsCampus);
     
     let currentCampus;
     if (!studentsCampus) {
@@ -31,7 +32,7 @@ export class SingleStudent extends React.Component {
         <img src={student.imgUrl} height="200" width="200" />
         <p>Email: {student.email}</p>
         <p>GPA: {student.gpa}</p>
-        
+        <Link to={`/students/${student.id}/edit`}><button type="button">edit</button></Link>
         {currentCampus}
       </div>
     )

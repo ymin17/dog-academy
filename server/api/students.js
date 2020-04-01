@@ -49,4 +49,33 @@ router.delete('/:studentId', async (req, res, next) => {
   }
 });
 
+router.put('/:studentId/unregister', async (req, res, next) => {
+  try {
+    const studentId = req.params.studentId;
+    console.log('studentId from router: ', studentId)
+    // const studentToUpdate = await Student.findOne({where: { id: studentId}});
+    const updated = await Student.update(
+      { campusId: null }, { where: { id: studentId } }
+      );
+    console.log('updated from router: ', updated);
+    res.json(updated);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/:studentId/edit', async (req, res, next) => {
+  try {
+    const studentId = req.params.studentId;
+    const { firstName, lastName, email } = req.body;
+    const studentToUpdate = await Student.findOne({
+      where: { id: studentId }
+    });
+    const updated = await studentToUpdate.update({firstName, lastName, email});
+    res.json(updated);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router

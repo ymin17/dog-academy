@@ -2,7 +2,7 @@
 const SET_STUDENTS = 'SET_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
 const DELETE_STUDENT = 'DELETE_STUDENT';
-
+const UNREGISTER = 'UNREGISTER';
 
 //action creators
 export const setStudents = (students) => ({
@@ -18,6 +18,11 @@ export const addStudent = (newStudent) => ({
 export const deleteStudent = (id) => ({
   type: DELETE_STUDENT,
   studentId: id
+})
+
+export const unregisterStudent = (students) => ({
+  type: UNREGISTER,
+  students
 })
 
 //thunk creator
@@ -52,6 +57,19 @@ export const fetchDeleteStudent = (id) => {
   }
 };
 
+export const unregisterFromServer = (id) => {
+  return async (dispatch, getState, {axios}) => {
+    try {
+      await axios.put(`/api/students/${id}/unregister`);
+      const {data} = await axios.get('/api/students');
+      dispatch(unregisterStudent(data));
+      console.log('curr state: ', getState())
+    } catch (err) {
+      console.error(err);
+    }
+  }
+}
+
 //initial state
 const initialState = {
   all: []
@@ -70,6 +88,8 @@ export default function studentsReducer(state = initialState, action) {
       currStudent = state.all.filter(student => student.id !== action.studentId);
       return {...state, all: currStudent};
     }
+    case UNREGISTER:
+      return {...state, all: action.students};
     default:
       return state;
   }

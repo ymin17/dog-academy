@@ -47,4 +47,18 @@ router.delete('/:campusId', async (req, res, next) => {
   }
 });
 
+router.put('/:campusId/edit', async (req, res, next) => {
+  try {
+    const campusId = req.params.campusId;
+    const { name, address } = req.body;
+    const campusToUpdate = await Campus.findOne({
+      where: { id: campusId }
+    });
+    const updated = await campusToUpdate.update({name, address});
+    res.json(updated);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router
