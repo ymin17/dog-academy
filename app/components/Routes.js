@@ -27,6 +27,7 @@ const Routes = () => {
         <Switch>
           <Route exact path="/campuses" component={AllCampuses} />
           <Route exact path="/campuses/addCampus" component={AddCampus} />
+          {/* <Route exact path="/campuses/:campusId/delete" component={AllCampuses} /> */}
           <Route exact path="/students" component={AllStudents} />
           <Route exact path="/students/addStudent" component={AddStudent} />
           <Route exact path="/campuses/:campusId" component={SingleCampus} />

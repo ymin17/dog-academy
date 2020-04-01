@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchStudents } from '../redux/students';
+import { fetchStudents, fetchDeleteStudent } from '../redux/students';
 
 // Notice that we're exporting the AllStudents component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -9,7 +9,15 @@ import { fetchStudents } from '../redux/students';
 export class AllStudents extends React.Component {
   componentDidMount() {
     this.props.getStudentsFromStore()
+    
+    this.handleClickDelete = this.handleClickDelete.bind(this);
   }
+  
+  handleClickDelete(id, e) {
+    e.preventDefault();
+    this.props.deleteStudent(id);
+  }
+  
   render() {
     const {students} = this.props
     return (
@@ -20,6 +28,7 @@ export class AllStudents extends React.Component {
               <div key={student.id}>
                 <img src={student.imageUrl} height="400" width="200" />
                 <h3><Link to={`/students/${student.id}`}>{student.firstName} {student.lastName}</Link></h3>
+                <button type="button" onClick={(e) => this.handleClickDelete(student.id, e)}>delete</button>
               </div>
             ))}
           </div>
@@ -37,7 +46,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    getStudentsFromStore: () => dispatch(fetchStudents())
+    getStudentsFromStore: () => dispatch(fetchStudents()),
+    deleteStudent: (id) => dispatch(fetchDeleteStudent(id))
   };
 };
 

@@ -1,6 +1,7 @@
 //action type
 const SET_STUDENTS = 'SET_STUDENTS';
 const ADD_STUDENT = 'ADD_STUDENT';
+const DELETE_STUDENT = 'DELETE_STUDENT';
 
 
 //action creators
@@ -12,6 +13,11 @@ export const setStudents = (students) => ({
 export const addStudent = (newStudent) => ({
   type: ADD_STUDENT,
   newStudent
+})
+
+export const deleteStudent = (id) => ({
+  type: DELETE_STUDENT,
+  studentId: id
 })
 
 //thunk creator
@@ -35,6 +41,17 @@ export const fetchAddStudent = (firstName, lastName, email) => {
   }
 }
 
+export const fetchDeleteStudent = (id) => {
+  return async (dispatch, getState, {axios}) => {
+    try {
+      await axios.delete((`/api/students/${id}`));
+      dispatch(deleteStudent(id))
+    } catch (err) {
+      console.error(err);
+    }
+  }
+};
+
 //initial state
 const initialState = {
   all: []
@@ -48,6 +65,11 @@ export default function studentsReducer(state = initialState, action) {
       return {...state, all: action.students};
     case ADD_STUDENT:
       return {...state, all: [...state.all, action.newStudent]};
+    case DELETE_STUDENT: {
+      let currStudent = [...state.all]
+      currStudent = state.all.filter(student => student.id !== action.studentId);
+      return {...state, all: currStudent};
+    }
     default:
       return state;
   }

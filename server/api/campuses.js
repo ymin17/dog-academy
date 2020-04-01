@@ -30,10 +30,18 @@ router.get('/:campusId', async (req, res, next) => {
 router.post('/addCampus', async (req, res, next) => {
   try {
     const { name, address } = req.body
-    console.log("req.body: ", req.body);
-    const newCampus = await Campus.create({name, address})
-    console.log('new Campus: ', newCampus)
+    const newCampus = await Campus.create({name, address});
     res.json(newCampus);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.delete('/:campusId', async (req, res, next) => {
+  try {
+    const campusId = req.params.campusId;
+    const deleted = await Campus.destroy({where: { id: campusId}});
+    res.json(deleted);
   } catch (err) {
     next(err);
   }

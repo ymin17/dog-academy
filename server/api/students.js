@@ -39,4 +39,14 @@ router.post('/addStudent', async (req, res, next) => {
   }
 });
 
+router.delete('/:studentId', async (req, res, next) => {
+  try {
+    const studentId = req.params.studentId;
+    const deleted = await Student.destroy({where: { id: studentId}});
+    res.json(deleted);
+  } catch (err) {
+    next(err);
+  }
+});
+
 module.exports = router
