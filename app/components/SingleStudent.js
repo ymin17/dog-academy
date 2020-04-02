@@ -10,9 +10,6 @@ export class SingleStudent extends React.Component {
   render() {
     const {student} = this.props
     const studentsCampus = student.campus
-    console.log('single student props: ', this.props)
-    console.log('STUDENTS CAMPUS: ', studentsCampus)
-    console.log('type of studentsCamp: ', typeof studentsCampus);
     
     let currentCampus;
     if (!studentsCampus) {

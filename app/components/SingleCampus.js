@@ -12,18 +12,13 @@ class SingleCampus extends React.Component {
   
   handleUnregister(studentId, e) {
     e.preventDefault();
-    console.log('STUDENT ID: ', studentId)
     this.props.unregister(studentId);
-    console.log('this.props.campus: ', this.props.campus)
     this.props.getSingleCampusFromStore(this.props.match.params.campusId);
   }
   
   render() {
     const {campus} = this.props
     const studentsInCampus = campus.students
-    console.log('THIS.PROPS: ', this.props);
-    console.log('THIS.STATE: ', this.state);
-    console.log('STUDENTS IN CAMPUS: ', studentsInCampus)
     
     let studentList;
     if (studentsInCampus === undefined || studentsInCampus.length === 0) {

@@ -29,8 +29,8 @@ export const unregisterStudent = (students) => ({
 export const fetchStudents = () => {
   return async (dispatch, getState, {axios}) => {
     try {
-    const { data } = await axios.get('/api/students')
-    dispatch(setStudents(data))
+      const { data } = await axios.get('/api/students')
+      dispatch(setStudents(data))
     } catch (err) {
       console.error(err);
     }
@@ -39,10 +39,12 @@ export const fetchStudents = () => {
 
 export const fetchAddStudent = (firstName, lastName, email) => {
   return async (dispatch, getState, {axios}) => {
-    const { data } = await axios.post(('/api/students/addStudent'), {firstName, lastName, email});
-    console.log(data);
-    dispatch(addStudent(data));
-    console.log('current state: ', getState());
+    try {
+      const { data } = await axios.post(('/api/students/addStudent'), {firstName, lastName, email});
+      dispatch(addStudent(data));
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
 
@@ -61,9 +63,8 @@ export const unregisterFromServer = (id) => {
   return async (dispatch, getState, {axios}) => {
     try {
       await axios.put(`/api/students/${id}/unregister`);
-      const {data} = await axios.get('/api/students');
+      const { data } = await axios.get('/api/students');
       dispatch(unregisterStudent(data));
-      console.log('curr state: ', getState())
     } catch (err) {
       console.error(err);
     }

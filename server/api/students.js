@@ -30,9 +30,7 @@ router.get('/:studentId', async (req, res, next) => {
 router.post('/addStudent', async (req, res, next) => {
   try {
     const { firstName, lastName, email } = req.body
-    console.log("req.body: ", req.body);
     const newStudent = await Student.create({firstName, lastName, email})
-    console.log('new Student: ', newStudent)
     res.json(newStudent);
   } catch (err) {
     next(err);
@@ -52,12 +50,9 @@ router.delete('/:studentId', async (req, res, next) => {
 router.put('/:studentId/unregister', async (req, res, next) => {
   try {
     const studentId = req.params.studentId;
-    console.log('studentId from router: ', studentId)
-    // const studentToUpdate = await Student.findOne({where: { id: studentId}});
     const updated = await Student.update(
       { campusId: null }, { where: { id: studentId } }
       );
-    console.log('updated from router: ', updated);
     res.json(updated);
   } catch (err) {
     next(err);

@@ -19,8 +19,6 @@ export class AddStudent extends Component {
   
   handleSubmit(event) {
     event.preventDefault();
-    
-    //post req
     this.props.addStudent(this.state.firstName, this.state.lastName, this.state.email);
     this.setState({firstName: '', lastName: '', email: ''});
   }

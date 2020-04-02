@@ -9,7 +9,6 @@ import { fetchStudents, fetchDeleteStudent } from '../redux/students';
 export class AllStudents extends React.Component {
   componentDidMount() {
     this.props.getStudentsFromStore()
-    
     this.handleClickDelete = this.handleClickDelete.bind(this);
   }
   

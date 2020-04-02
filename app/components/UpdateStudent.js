@@ -20,7 +20,6 @@ export class UpdateStudent extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const id = this.props.match.params.studentId;
-    //post req
     this.props.updateStudent(id, this.state.firstName, this.state.lastName, this.state.email);
     this.setState({firstName: '', lastName: '', email: ''});
   }

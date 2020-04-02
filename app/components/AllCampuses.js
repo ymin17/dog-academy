@@ -20,7 +20,6 @@ export class AllCampuses extends React.Component {
   
   render() {
     const {campuses} = this.props
-    console.log(this.props);
     if (this.props.loading) return <h1>Loading!!!</h1>
     
     return (

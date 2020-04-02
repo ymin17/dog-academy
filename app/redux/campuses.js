@@ -22,12 +22,12 @@ export const deleteCampus = (id) => ({
 //thunk creators
 export const fetchCampuses = () => {
  return async (dispatch, getState, {axios}) => {
-  try {
-  const { data } = await axios.get('/api/campuses')
-  dispatch(setCampuses(data))
-  } catch (err) {
-    console.error(err);
-  }
+    try {
+      const { data } = await axios.get('/api/campuses')
+      dispatch(setCampuses(data))
+    } catch (err) {
+      console.error(err);
+    }
  }
 };
 

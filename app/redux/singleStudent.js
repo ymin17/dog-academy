@@ -26,9 +26,7 @@ export const fetchUpdateStudent = (id, firstName, lastName, email) => {
   return async (dispatch, getState, {axios}) => {
     try {
       const { data } = await axios.put((`/api/students/${id}/edit`), {firstName, lastName, email});
-      console.log('DATA from axios.put: ', data)
       dispatch(updateStudent({ data }));
-      console.log('curr state: ', getState())
     } catch (err) {
       console.error(err);
     }
