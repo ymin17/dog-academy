@@ -20,6 +20,7 @@ export class AllStudents extends React.Component {
   
   render() {
     const {students} = this.props
+    if (this.props.loading) return <h1>Loading!!!</h1>
     return (
       <div className="container">
         <div className="row align-items-center">
@@ -61,7 +62,8 @@ export class AllStudents extends React.Component {
 
 const mapState = (state) => {
   return {
-    students: state.students.all
+    students: state.students.all,
+    loading: state.students.loading
   };
 };
 

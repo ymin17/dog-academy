@@ -26,6 +26,8 @@ export class SingleStudent extends React.Component {
         )
     }
     
+    if (this.props.loading) return <h1>Loading!!!</h1>
+    
     return (
       <div className="container">
         <h3 className="m-3">{student.firstName} {student.lastName}</h3>
@@ -44,7 +46,8 @@ export class SingleStudent extends React.Component {
 
 const mapState = state => {
   return {
-    student: state.student.singleStudent
+    student: state.student.singleStudent,
+    loading: state.student.loading
   };
 };
 

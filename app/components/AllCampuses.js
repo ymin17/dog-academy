@@ -21,6 +21,7 @@ export class AllCampuses extends React.Component {
   render() {
     const {campuses} = this.props
     console.log(this.props);
+    if (this.props.loading) return <h1>Loading!!!</h1>
     
     return (
       <div className="container">
@@ -61,7 +62,8 @@ export class AllCampuses extends React.Component {
 
 const mapState = (state) => {
   return {
-    campuses: state.campuses.all
+    campuses: state.campuses.all,
+    loading: state.campuses.loading
   };
 };
 

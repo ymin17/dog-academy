@@ -36,15 +36,16 @@ export const fetchUpdateStudent = (id, firstName, lastName, email) => {
 };
 
 const initialState = {
-  singleStudent: {}
+  singleStudent: {},
+  loading: true
 }
 
 export default function studentReducer(state = initialState, action) {
   switch (action.type) {
     case GET_STUDENT:
-      return {...state, singleStudent: action.student};
+      return {...state, singleStudent: action.student, loading: false };
     case UPDATE_STUDENT:
-      return {...state, singleStudent: action.student};
+      return {...state, singleStudent: action.student, loading: false };
     default:
       return state;
   }

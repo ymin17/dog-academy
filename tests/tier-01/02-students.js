@@ -155,7 +155,7 @@ describe("Tier One: Students", () => {
       });
 
       xit("*** returns the initial state by default", () => {
-        throw new Error("replace this error with your own test");
+        expect(testStore.getState().students).to.be.an("array");
       });
 
       xit("reduces on SET_STUDENTS action", () => {
@@ -313,7 +313,19 @@ describe("Tier One: Students", () => {
     });
 
     xit("*** email must be a valid email", async () => {
-      throw new Error("replace this error with your own test");
+      const student = {
+        firstName: "Sally",
+        lastName: "Ride",
+        email: "sallyr.nasa.gov",
+        gpa: 3.5
+      };
+      const overachiever = Student.build(student);
+      try {
+        await overachiever.save();
+        throw Error("validation should have failed with unvalid email");
+      } catch (err) {
+        expect(err.message).to.contain("Validation error on email");
+      }
     });
 
     xit("gpa must be a float between 0.0 and 4.0", async () => {

@@ -36,15 +36,16 @@ export const fetchUpdateCampus = (id, name, address) => {
 
 
 const initialState = {
-  singleCampus: {}
+  singleCampus: {},
+  loading: true
 }
 
 export default function campusReducer(state = initialState, action) {
   switch (action.type) {
     case GET_CAMPUS:
-      return {...state, singleCampus: action.campus};
+      return {...state, singleCampus: action.campus, loading: false };
     case UPDATE_CAMPUS:
-      return {...state, singleCampus: action.campus};
+      return {...state, singleCampus: action.campus, loading: false };
     default:
       return state;
   }

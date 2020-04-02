@@ -55,7 +55,8 @@ export const fetchDeleteCampus = (id) => {
 
 //initial state
 const initialState = {
-  all: []
+  all: [],
+  loading: true
 }
 
 // Take a look at app/redux/index.js to see where this reducer is
@@ -63,13 +64,13 @@ const initialState = {
 export default function campusesReducer(state = initialState, action) {
   switch (action.type) {
     case SET_CAMPUSES:
-      return {...state, all: action.campuses};
+      return {...state, all: action.campuses, loading: false };
     case ADD_CAMPUS:
-      return {...state, all: [...state.all, action.newCampus]};
+      return {...state, all: [...state.all, action.newCampus], loading: false };
     case DELETE_CAMPUS: {
       let currCampus = [...state.all]
       currCampus = state.all.filter(campus => campus.id !== action.campusId);
-      return {...state, all: currCampus};
+      return {...state, all: currCampus, loading: false };
     }
     default:
       return state;

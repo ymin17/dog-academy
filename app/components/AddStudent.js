@@ -27,6 +27,7 @@ export class AddStudent extends Component {
   
   render() {
     const { firstName, lastName, email } = this.state;
+    if (this.props.loading) return <h1>Loading!!!</h1>
     return (
       <div>
         <h2 className="m-3">New Student Form</h2>
@@ -58,10 +59,16 @@ export class AddStudent extends Component {
   }
 }
 
+const mapState = state => {
+  return {
+    loading: state.students.loading
+  };
+};
+
 const mapDispatch = (dispatch) => {
   return {
     addStudent: (firstName, lastName, email) => dispatch(fetchAddStudent(firstName, lastName, email))
   };
 };
 
-export default connect(null, mapDispatch)(AddStudent)
+export default connect(mapState, mapDispatch)(AddStudent)

@@ -46,7 +46,9 @@ class SingleCampus extends React.Component {
         </div>
       </ul>)
     }
-
+    
+    if (this.props.loading) return <h1>Loading!!!</h1>
+    
     return (
       <div>
         <h2 id="title" className="row m-3">{campus.name}</h2>
@@ -67,7 +69,8 @@ class SingleCampus extends React.Component {
 
 const mapState = state => {
   return {
-    campus: state.campus.singleCampus
+    campus: state.campus.singleCampus,
+    loading: state.campus.loading
   };
 };
 

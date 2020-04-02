@@ -76,7 +76,8 @@ export const unregisterFromServer = (id) => {
 
 //initial state
 const initialState = {
-  all: []
+  all: [],
+  loading: true
 }
 
 // Take a look at app/redux/index.js to see where this reducer is
@@ -84,18 +85,17 @@ const initialState = {
 export default function studentsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_STUDENTS:
-      return {...state, all: action.students};
+      return {...state, all: action.students, loading: false };
     case ADD_STUDENT:
-      return {...state, all: [...state.all, action.newStudent]};
+      return {...state, all: [...state.all, action.newStudent], loading: false };
     case DELETE_STUDENT: {
       let currStudent = [...state.all]
       currStudent = state.all.filter(student => student.id !== action.studentId);
-      return {...state, all: currStudent};
+      return {...state, all: currStudent, loading: false };
     }
     case UNREGISTER:
-      return {...state, all: action.students};
+      return {...state, all: action.students, loading: false };
     default:
       return state;
   }
-  // return null;
 }

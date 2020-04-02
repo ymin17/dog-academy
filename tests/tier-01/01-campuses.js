@@ -173,7 +173,7 @@ describe("Tier One: Campuses", () => {
       });
 
       xit("*** returns the initial state by default", () => {
-        throw new Error("replace this error with your own test");
+        expect(testStore.getState().campuses).to.be.an("array");
       });
 
       xit("reduces on SET_CAMPUSES action", () => {
@@ -313,7 +313,19 @@ describe("Tier One: Campuses", () => {
     });
 
     xit("*** requires name and address", async () => {
-      throw new Error("replace this error with your own test");
+      campuses.name = null;
+      campuses.address = null;
+
+      let result, error;
+      try {
+        result = await campuses.validate();
+      } catch (err) {
+        error = err;
+      }
+
+      if (result) throw Error('validation should fail when name and address are null');
+
+      expect(error).to.be.an.instanceOf(Error);
     });
 
     xit("name and address cannot be empty", async () => {
