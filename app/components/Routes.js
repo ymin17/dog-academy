@@ -14,13 +14,13 @@ const Routes = () => {
   return (
     <Router>
       <div>
-        <nav>
-          Welcome!
-          <ul>
-            <li><Link className="navlink" to="/">Home</Link></li>
-            <li><Link className="navlink" to="/campuses">Campuses</Link></li>
-            <li><Link className="navlink" to="/students">Students</Link></li>
-          </ul>
+        <nav className="navbar navbar-dark bg-dark">
+          <a className="navbar-brand">Margaret Hamilton Academy of Javascript</a>
+            <ul className="nav justify-content-end">
+              <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
+              <li className="nav-item"><Link className="nav-link" to="/campuses">Campuses</Link></li>
+              <li className="nav-item"><Link className="nav-link" to="/students">Students</Link></li>
+            </ul>
         </nav>
         
         <Switch>

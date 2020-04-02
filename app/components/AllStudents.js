@@ -21,18 +21,39 @@ export class AllStudents extends React.Component {
   render() {
     const {students} = this.props
     return (
-      <div>
-        <h2>All Students</h2>
-          <div>
-            {students.map(student => (
-              <div key={student.id}>
-                <img src={student.imageUrl} height="400" width="200" />
-                <h3><Link to={`/students/${student.id}`}>{student.firstName} {student.lastName}</Link></h3>
-                <button type="button" onClick={(e) => this.handleClickDelete(student.id, e)}>delete</button>
-              </div>
-            ))}
+      <div className="container">
+        <div className="row align-items-center">
+          <h2 className="col-9">All Students</h2>
+          <div className="col-3">
+            <Link to="/students/addStudent">
+              <button type="button" className="btn btn-success btn-sm">
+                Add Student
+              </button>
+            </Link>
           </div>
-          <Link to="/students/addStudent"><button type="button">Add Student</button></Link>
+        </div>
+        
+        <div className="row justify-content-around">
+          {students.map(student => (
+            <div key={student.id} className="border border-secondary m-2">
+              <div className="col-xs">
+                <img src={student.imageUrl} height="200" width="200" />
+                <h3 className="h5" id="students-name">
+                  <Link to={`/students/${student.id}`}>
+                    {student.firstName} {student.lastName}
+                  </Link>
+                </h3>
+                <button
+                  type="button"
+                  className="btn btn-dark btn-sm float-right mr-1 mb-1" 
+                  onClick={(e) => this.handleClickDelete(student.id, e)}
+                >
+                  delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     )
   }

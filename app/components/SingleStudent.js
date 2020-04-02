@@ -16,23 +16,26 @@ export class SingleStudent extends React.Component {
     
     let currentCampus;
     if (!studentsCampus) {
-      currentCampus = <p>This Student is not registered a campus.</p>
+      currentCampus = <p className="mt-4">This Student is not registered a campus.</p>
     } else {
       currentCampus = (
         <div>
-          <p>This student is registered to a campus</p>
-          <p><Link to={`/campuses/${studentsCampus.id}`}>{studentsCampus.name}</Link></p>
+          <p className="mt-4">This student is registered to a campus: </p>
+          <p id="students-name"><Link to={`/campuses/${studentsCampus.id}`}>{studentsCampus.name}</Link></p>
         </div>
         )
     }
     
     return (
-      <div>
-        <h2>{student.firstName} {student.lastName}</h2>
+      <div className="container">
+        <h3 className="m-3">{student.firstName} {student.lastName}</h3>
         <img src={student.imgUrl} height="200" width="200" />
+        <div className="float-right">
         <p>Email: {student.email}</p>
         <p>GPA: {student.gpa}</p>
-        <Link to={`/students/${student.id}/edit`}><button type="button">edit</button></Link>
+        <Link to={`/students/${student.id}/edit`}><button type="button" className="btn btn-success btn-sm">edit</button></Link>
+        </div>
+        <br />
         {currentCampus}
       </div>
     )

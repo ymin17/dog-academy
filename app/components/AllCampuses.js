@@ -23,20 +23,37 @@ export class AllCampuses extends React.Component {
     console.log(this.props);
     
     return (
-      <div>
-        <center>
-        <h2>All Campuses</h2>
-        <div>
+      <div className="container">
+        <div className="row align-items-center">
+          <h2 className="col-9 mt-3">All Campuses</h2>
+          <div className="col-3">
+            <Link to="/campuses/addCampus">
+              <button type="button" className="btn btn-success btn-sm mt-3">
+                Add Campus
+              </button>
+            </Link>
+          </div>
+        </div>
+        
+        <div className="row justify-content-around">
           {campuses.map((campus) => (
-            <div key={campus.id}>
-              <h3><Link to={`/campuses/${campus.id}`}>{campus.name}</Link></h3>
-              <img src={campus.imageUrl} height="400" width="400" />
-              <button type="button" onClick={(e) => this.handleClickDelete(campus.id, e)}>delete</button>
+            <div key={campus.id} className="border border-secondary m-2">
+              <div className="col-50">
+              <img className="float-left mr-2" src={campus.imageUrl} height="200" width="200" />
+              <p className="float-right mr-5">
+                <Link to={`/campuses/${campus.id}`}>
+                  {campus.name}
+                </Link>
+              </p> <br />
+              <button
+              type="button" className="btn btn-dark btn-sm float-right mr-2"
+              onClick={(e) => this.handleClickDelete(campus.id, e)}>
+                delete
+              </button>
+              </div>
             </div>
           ))}
         </div>
-        <Link to="/campuses/addCampus"><button type="button">Add Campus</button></Link>
-        </center>
       </div>
     )
   }

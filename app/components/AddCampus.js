@@ -18,8 +18,6 @@ export class AddCampus extends Component {
   
   handleSubmit(event) {
     event.preventDefault();
-    
-    //post req
     this.props.addCampus(this.state.name, this.state.address);
     this.setState({name: '', address: ''});
   }
@@ -28,15 +26,27 @@ export class AddCampus extends Component {
     const { name, address } = this.state;
     return (
       <div>
-        <h2>New Campus Form</h2>
+        <h2 className="m-3">New Campus Form</h2>
         <form onSubmit={this.handleSubmit}>
-          <label>Campus Name: </label>
-          <input type="text" name="name" value={name} onChange={this.handleChange} />
-          <br />
-          <label>Campus Address: </label>
-          <input type="text" name="address" value={address} onChange={this.handleChange} />
-          <br />
-          <input type="submit" />
+          <div className="form-row">
+            <div className="form-group">
+              <label className="m-3">Campus Name: </label>
+              <div className="col-50 ml-3">
+              <input type="text" name="name" value={name} onChange={this.handleChange} className="form-control" />
+              <br />
+              </div>
+            </div>
+            
+            <div className="form-group">
+              <label className="m-3">Campus Address: </label>
+              <div className="ml-3">
+              <input type="text" name="address" value={address} onChange={this.handleChange} className="form-control" />
+              <br />
+              </div>
+            </div>
+            
+          </div>
+          <button type="submit" className="btn btn-primary m-3">submit</button>
         </form>
       </div>
     )
