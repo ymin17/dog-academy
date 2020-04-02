@@ -70,10 +70,6 @@ export const unregisterFromServer = (id) => {
   }
 }
 
-//returning true sequelize in the express route
-//and with the return val 
-//reference one of the wickistack!!
-
 //initial state
 const initialState = {
   all: [],

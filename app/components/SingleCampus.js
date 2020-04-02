@@ -82,4 +82,4 @@ const mapDispatch = dispatch => {
 };
 
 export default connect(mapState, mapDispatch)(SingleCampus)
-//const newcomponent console.log // function /// click it to see
+
