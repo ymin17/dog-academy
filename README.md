@@ -1,6 +1,7 @@
 # Junior Phase Final Project
 
-## Video Link: https://youtu.be/GfRzWS3TGNw
+## Video Link: 
+https://youtu.be/GfRzWS3TGNw
 
 ## Getting started
 
