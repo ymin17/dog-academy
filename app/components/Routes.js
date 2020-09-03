@@ -15,14 +15,28 @@ const Routes = () => {
     <Router>
       <div>
         <nav className="navbar navbar-dark bg-dark">
-          <a className="navbar-brand">Margaret Hamilton Academy of Javascript</a>
-            <ul className="nav justify-content-end">
-              <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/campuses">Campuses</Link></li>
-              <li className="nav-item"><Link className="nav-link" to="/students">Students</Link></li>
-            </ul>
+          <a className="navbar-brand">
+            Margaret Hamilton Academy of Javascript
+          </a>
+          <ul className="nav justify-content-end">
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/campuses">
+                Campuses
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/students">
+                Students
+              </Link>
+            </li>
+          </ul>
         </nav>
-        
+
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/campuses" component={AllCampuses} />
@@ -30,9 +44,17 @@ const Routes = () => {
           <Route exact path="/students" component={AllStudents} />
           <Route exact path="/students/addStudent" component={AddStudent} />
           <Route exact path="/campuses/:campusId" component={SingleCampus} />
-          <Route exact path="/campuses/:campusId/edit" component={UpdateCampus} />
+          <Route
+            exact
+            path="/campuses/:campusId/edit"
+            component={UpdateCampus}
+          />
           <Route exact path="/students/:studentId" component={SingleStudent} />
-          <Route exact path="/students/:studentId/edit" component={UpdateStudent} />
+          <Route
+            exact
+            path="/students/:studentId/edit"
+            component={UpdateStudent}
+          />
         </Switch>
       </div>
     </Router>
