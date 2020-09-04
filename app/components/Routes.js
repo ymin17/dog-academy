@@ -18,7 +18,7 @@ const Routes = () => {
           <div className="container">
             
             <div className="logo float-left">
-            <h1 className="text-light"><a href="index.html"><span>Academy</span></a></h1>
+            <h1 className="text-light"><Link to="/"><span role="img" aria-label="dog">Dog 🐶 Academy</span></Link></h1>
             </div>
             
             <nav className="nav-menu float-right d-none d-lg-block">

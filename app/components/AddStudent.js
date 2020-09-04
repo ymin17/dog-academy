@@ -25,34 +25,38 @@ export class AddStudent extends Component {
   
   render() {
     const { firstName, lastName, email } = this.state;
-    if (this.props.loading) return <h1>Loading!!!</h1>
+    if (this.props.loading) return <h2>Loading...</h2>
     return (
-      <div>
-        <h2 className="m-3">New Student Form</h2>
+      <section id="contact" className="contact">
+        <div className="container">
+          <div className="col-lg-12" data-aos="fade-up">
+          <h2>New Student Form</h2>
 
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-row">
-            <div className="form-group col-md-5 m-2">
-              <label className="mt-3 ml-2">Student First Name: </label>
-              <input type="text" name="firstName" value={firstName} onChange={this.handleChange} className="form-control m-2" placeholder="First Name" />
-              <br />
+          <form onSubmit={this.handleSubmit} className="php-email-form">
+            <div className="form-row">
+              <div className="form-group col-lg-6">
+                <label className="m-3">Student First Name: </label>
+                <input type="text" name="firstName" value={firstName} onChange={this.handleChange} className="form-control" placeholder="First Name" />
+                <br />
+              </div>
+                
+              <div className="form-group col-lg-6">
+                <label className="m-3">Student Last Name: </label>
+                <input type="text" name="lastName" value={lastName} onChange={this.handleChange} className="form-control" placeholder="Last Name" />
+                <br />
+              </div>
+                
+              <div className="form-group col-lg-6">
+                <label className="m-3">Student Email: </label>
+                <input type="text" name="email" value={email} onChange={this.handleChange} className="form-control" aria-describedby="emailHelp" placeholder="Enter email" />
+                <br />
+              </div>
             </div>
-              
-            <div className="form-group col-md-5 m-2">
-              <label className="mt-3 ml-2">Student Last Name: </label>
-              <input type="text" name="lastName" value={lastName} onChange={this.handleChange} className="form-control m-2" placeholder="Last Name" />
-              <br />
-            </div>
-              
-            <div className="form-group ml-3">
-              <label className="ml-1">Student Email: </label>
-              <input type="text" name="email" value={email} onChange={this.handleChange} className="form-control m-2" aria-describedby="emailHelp" placeholder="Enter email" />
-              <br />
-            </div>
+            <button type="submit" className="btn btn-primary ml-3">submit</button>
+          </form>
           </div>
-          <button type="submit" className="btn btn-primary ml-3">submit</button>
-        </form>
-      </div>
+        </div>
+      </section>
     )
   }
 }

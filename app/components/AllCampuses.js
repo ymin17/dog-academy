@@ -31,7 +31,7 @@ export class AllCampuses extends React.Component {
             <h2>All Campuses</h2>
             <div className="col-3">
               <Link to="/campuses/addCampus">
-                <button type="button" className="btn btn-success btn-sm mt-3">
+                <button type="button" id="add-btn" className="btn btn-success btn-sm mt-3">
                   Add Campus
                 </button>
               </Link>

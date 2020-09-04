@@ -19,6 +19,9 @@ class SingleCampus extends React.Component {
   render() {
     const {campus} = this.props
     const studentsInCampus = campus.students
+    const campusImg = campus.imageUrl
+    console.log(campus, "<<<<<")
+    console.log(campusImg)
     
     let studentList;
     if (studentsInCampus === undefined || studentsInCampus.length === 0) {
@@ -32,7 +35,7 @@ class SingleCampus extends React.Component {
           <li key={student.id} className="col-5">
             <img src={student.imageUrl} height="200" width="200" />
             <br />
-            <div className="col-10"><Link to={`/students/${student.id}`}>{student.firstName} {student.lastName}</Link></div>
+            <div><Link to={`/students/${student.id}`} id="students-on-campus">{student.firstName} {student.lastName}</Link></div>
             <Link to={`/students/${student.id}/unregister`}>
               <button type="button" onClick={(e) => this.handleUnregister(student.id, e)}className="btn btn-primary btn-sm m-3 col-5 float-right">unregister</button>
             </Link>
@@ -45,18 +48,36 @@ class SingleCampus extends React.Component {
     if (this.props.loading) return <h1>Loading!!!</h1>
     
     return (
-      <div>
-        <h2 id="title" className="row m-3">{campus.name}</h2>
-        <img src={campus.imgUrl} height="300" width="300" className="col" />
-        <p className="col-sm">{campus.address}</p>
-        <p className="col-sm">{campus.description}</p>
-        <Link to={`/campuses/${campus.id}/edit`}>
-          <button type="button" className="btn btn-success btn-sm m-3 float-right">edit</button>
-        </Link>
-        <br />
-        <h2 id="students-list-single-camp">Students on campus</h2>
-        {studentList}
-      </div>
+      <section className="portfolio-details">
+        <div className="container">
+          <div className="portfolio-details-container">
+            <div className="owl-carousel portfolio-details-carousel">
+              <img src={campusImg} className="img-fluid" alt="" width="90%" />
+            </div>
+            
+            <div className="portfolio-info">
+              <h2>{campus.name}</h2>
+              <ul>
+                <li><strong>Address:</strong> {campus.address}</li>
+                <li>
+                  <Link to={`/campuses/${campus.id}/edit`}>
+                  <button type="button" className="btn btn-success btn-sm m-3 float-right">edit</button>
+                  </Link>
+                </li>
+              </ul>
+              {/* <p className="col-sm">{campus.address}</p> */}
+            </div>
+          </div>
+          
+          <div className="portfolio-description">
+          <p className="col-sm">{campus.description}</p>
+          </div>
+          
+          <br />
+          <h2 id="students-list-single-camp">Students on campus</h2>
+          {studentList}
+        </div>
+      </section>
 
     )
   }

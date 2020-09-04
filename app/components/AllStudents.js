@@ -28,7 +28,7 @@ export class AllStudents extends React.Component {
             <h2>All Students</h2>
             <div className="col-3">
               <Link to="/students/addStudent">
-                <button type="button" className="btn btn-success btn-sm">
+                <button type="button" id="add-btn" className="btn btn-success btn-sm">
                   Add Student
                 </button>
               </Link>
@@ -38,10 +38,10 @@ export class AllStudents extends React.Component {
           <div className="row">
             
             {students.map(student => (
-              <div key={student.id} className="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up">
+              <div key={student.id} data-aos="fade-up">
                 <div className="member">
                   <div className="pic">
-                    <img src={student.imageUrl} className="img-fluid" alt="" width="330px" height="330px" />
+                    <img src={student.imageUrl} className="img-fluid" alt="" width="250px" height="250px" />
                   </div>
                   <div className="member-info">
                     <h4>
@@ -51,7 +51,7 @@ export class AllStudents extends React.Component {
                     </h4>
                     <button
                       type="button"
-                      className="btn btn-dark btn-sm float-right mr-1 mb-1" 
+                      className="btn btn-secondary btn-sm float-right mr-1 mb-1" 
                       onClick={(e) => this.handleClickDelete(student.id, e)}
                     >
                       delete
