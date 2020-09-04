@@ -28,27 +28,31 @@ export class UpdateCampus extends Component {
     if (this.props.loading) return <h1>Loading!!!</h1>
     
     return (
-      <div>
-        <h2 className="m-3">Edit Campus Form</h2>
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-row">
-            <div className="form-group">
-              <label className="m-3">Campus Name: </label>
-              <div className="col-50 ml-3">
-              <input type="text" name="name" value={name} onChange={this.handleChange} className="form-control" />
+      <section id="contact" className="contact">
+        <div className="container">
+          <div className="col-lg-12" data-aos="fade-up">
+            <h2>Edit Campus Form</h2>
+            <form onSubmit={this.handleSubmit} className="php-email-form">
+              <div className="form-row">
+                <div className="col-lg-6 form-group">
+                  <label className="m-3">Campus Name: </label>
+                  <div className="col-50 ml-3">
+                  <input type="text" name="name" value={name} onChange={this.handleChange} className="form-control" />
+                  </div>
+                </div>
+                
+                <div className="col-lg-6 form-group">
+                  <label className="m-3">Campus Address: </label>
+                  <div className="ml-3">
+                  <input type="text" name="address" value={address} onChange={this.handleChange} className="form-control" />
+                  </div>
+                </div>
               </div>
-            </div>
-            
-            <div className="form-group">
-              <label className="m-3">Campus Address: </label>
-              <div className="ml-3">
-              <input type="text" name="address" value={address} onChange={this.handleChange} className="form-control" />
-              </div>
-            </div>
+              <button type="submit" className="btn btn-primary m-3">submit</button>
+            </form>
           </div>
-          <button type="submit" className="btn btn-primary m-3">submit</button>
-        </form>
-      </div>
+        </div>
+      </section>
     )
   }
 }
