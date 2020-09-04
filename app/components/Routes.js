@@ -14,11 +14,28 @@ const Routes = () => {
   return (
     <Router>
       <div>
-        <nav className="navbar navbar-dark bg-dark">
-          <a className="navbar-brand">
+        <header id="header">
+          <div className="container">
+            
+            <div className="logo float-left">
+            <h1 className="text-light"><a href="index.html"><span>Academy</span></a></h1>
+            </div>
+            
+            <nav className="nav-menu float-right d-none d-lg-block">
+              <ul>
+                <li className="active"><Link to="/">Home</Link></li>
+                {/* <li><a href="#about">About Us</a></li> */}
+                <li><Link to="/campuses">Campuses</Link></li>
+                <li><Link to="/students">Students</Link></li>
+              </ul>
+            </nav>
+          </div>
+        </header>
+        {/* <nav>
+          <header id="header" className="fized-top header-transparent">
             Margaret Hamilton Academy of Javascript
-          </a>
-          <ul className="nav justify-content-end">
+          </header>
+          <ul className="nav">
             <li className="nav-item">
               <Link className="nav-link" to="/">
                 Home
@@ -35,7 +52,7 @@ const Routes = () => {
               </Link>
             </li>
           </ul>
-        </nav>
+        </nav> */}
 
         <Switch>
           <Route exact path="/" component={Home} />

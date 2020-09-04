@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchCampuses, fetchDeleteCampus } from "../redux/campuses";
+import { BiLinkExternal } from 'react-icons/fa';
 
 // Notice that we're exporting the AllCampuses component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
@@ -23,38 +24,47 @@ export class AllCampuses extends React.Component {
     if (this.props.loading) return <h1>Loading!!!</h1>
     
     return (
-      <div className="container">
-        <div className="row align-items-center">
-          <h2 className="col-9 mt-3">All Campuses</h2>
-          <div className="col-3">
-            <Link to="/campuses/addCampus">
-              <button type="button" className="btn btn-success btn-sm mt-3">
-                Add Campus
-              </button>
-            </Link>
+      <section id="portfolio" className="portfolio section-bg">
+        <div className="container" data-aos="fade-up" data-aos-delay="100">
+          
+          <div className="section-title">
+            <h2>All Campuses</h2>
+            <div className="col-3">
+              <Link to="/campuses/addCampus">
+                <button type="button" className="btn btn-success btn-sm mt-3">
+                  Add Campus
+                </button>
+              </Link>
+            </div>
+          </div>
+          
+          <div className="row portfolio-container">
+            {campuses.map((campus) => (
+              <div key={campus.id} className="col-lg-4 col-md-6 portfolio-item">
+                <div className="portfolio-wrap">
+                  <img className="img-fluid" src={campus.imageUrl} height="250" width="320" />
+                  <div className="portfolio-info">
+                    <h4>{campus.name}</h4>
+                    <div className="portfolio-links">
+                    
+                      <Link to={`/campuses/${campus.id}`}> 
+                        <span className="glyphicon glyphicon-eye-open"></span>
+                      </Link>
+                  
+                    </div>
+                  <br />
+                  <button
+                  type="button" className="btn btn-dark btn-sm float-right mr-2"
+                  onClick={(e) => this.handleClickDelete(campus.id, e)}>
+                    delete
+                  </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        
-        <div className="row justify-content-around">
-          {campuses.map((campus) => (
-            <div key={campus.id} className="border border-secondary m-2">
-              <div className="col-50">
-              <img className="float-left mr-2" src={campus.imageUrl} height="200" width="200" />
-              <p className="float-right mr-5">
-                <Link to={`/campuses/${campus.id}`}>
-                  {campus.name}
-                </Link>
-              </p> <br />
-              <button
-              type="button" className="btn btn-dark btn-sm float-right mr-2"
-              onClick={(e) => this.handleClickDelete(campus.id, e)}>
-                delete
-              </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      </section>
     )
   }
 }

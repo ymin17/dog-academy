@@ -21,40 +21,48 @@ export class AllStudents extends React.Component {
     const {students} = this.props
     if (this.props.loading) return <h1>Loading!!!</h1>
     return (
-      <div className="container">
-        <div className="row align-items-center">
-          <h2 className="col-9">All Students</h2>
-          <div className="col-3">
-            <Link to="/students/addStudent">
-              <button type="button" className="btn btn-success btn-sm">
-                Add Student
-              </button>
-            </Link>
+      <section id="team" className="team">
+        <div className="container">
+          
+          <div className="section-title">
+            <h2>All Students</h2>
+            <div className="col-3">
+              <Link to="/students/addStudent">
+                <button type="button" className="btn btn-success btn-sm">
+                  Add Student
+                </button>
+              </Link>
+            </div>
+          </div>
+          
+          <div className="row">
+            
+            {students.map(student => (
+              <div key={student.id} className="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up">
+                <div className="member">
+                  <div className="pic">
+                    <img src={student.imageUrl} className="img-fluid" alt="" width="330px" height="330px" />
+                  </div>
+                  <div className="member-info">
+                    <h4>
+                      <Link to={`/students/${student.id}`}>
+                        {student.firstName} {student.lastName}
+                      </Link>
+                    </h4>
+                    <button
+                      type="button"
+                      className="btn btn-dark btn-sm float-right mr-1 mb-1" 
+                      onClick={(e) => this.handleClickDelete(student.id, e)}
+                    >
+                      delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        
-        <div className="row justify-content-around">
-          {students.map(student => (
-            <div key={student.id} className="border border-secondary m-2">
-              <div className="col-xs">
-                <img src={student.imageUrl} height="200" width="200" />
-                <h3 className="h5" id="students-name">
-                  <Link to={`/students/${student.id}`}>
-                    {student.firstName} {student.lastName}
-                  </Link>
-                </h3>
-                <button
-                  type="button"
-                  className="btn btn-dark btn-sm float-right mr-1 mb-1" 
-                  onClick={(e) => this.handleClickDelete(student.id, e)}
-                >
-                  delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      </section>
     )
   }
 }
