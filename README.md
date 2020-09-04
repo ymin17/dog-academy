@@ -12,8 +12,6 @@ A Full-stack Web Application that featuring campuses and students.
 - React-Redux
 - Bootstrap
 
-## Video Link: 
-https://youtu.be/GfRzWS3TGNw
 
 ## Getting started
 
